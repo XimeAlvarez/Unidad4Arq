@@ -1,0 +1,236 @@
+<h1 style="text-align: right;"><span style="background-color: #ccffff;"><img style="float: left;" src="https://correos.saltillo.tecnm.mx/images/its.png" alt="its logo" width="191" height="176" /></span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Logo-TecNM-2017.png/640px-Logo-TecNM-2017.png" alt="" width="251" height="155" /></h1>
+<h4 style="text-align: right;"><span style="color: #99cc00;">Arquitectura de computadoras</span></h4>
+<h4 style="text-align: right;"><span style="color: #99cc00;">Ximena Carolina Alvarez moreno</span></h4>
+<h4 style="text-align: right;"><span style="color: #99cc00;"><a style="color: #99cc00;" href="mailto:ximenalvarez29.m@gmail.com">ximenalvarez29.m@gmail.com</a></span></h4>
+<h4 style="text-align: right;"><span style="color: #99cc00;">17:00 HRS</span></h4>
+
+
+<h1 style="text-align: center;">UNIDAD 4</h1>
+<h2>4.1 Aspectos basicos de la computaci&oacute;n paralela</h2>
+<p style="text-align: justify;">La computaci&oacute;n paralela es una forma de c&oacute;mputo en la que muchas instrucciones se ejecutan simult&aacute;neamente, operando sobre el principio de que problemas grandes, a menudo se pueden dividir en unos m&aacute;s peque&ntilde;os, que luego son resueltos simult&aacute;neamente (en paralelo). Hay varias formas diferentes de computaci&oacute;n paralela: paralelismo a nivel de bit, paralelismo a nivel de instrucci&oacute;n, paralelismo de datos y paralelismo de tareas. El paralelismo se ha empleado durante muchos a&ntilde;os, sobre todo en la computaci&oacute;n de altas prestaciones, pero el inter&eacute;s en ella ha crecido &uacute;ltimamente debido a las limitaciones f&iacute;sicas que impiden el aumento de la frecuencia. Como el consumo de energ&iacute;a y por consiguiente la generaci&oacute;n de calor de las computadoras constituye una preocupaci&oacute;n en los &uacute;ltimos a&ntilde;os, la computaci&oacute;n en paralelo se ha convertido en el paradigma dominante en la arquitectura de computadores, principalmente en forma de procesadores multin&uacute;cleo.</p>
+<p style="text-align: justify;">Los programas inform&aacute;ticos paralelos son m&aacute;s dif&iacute;ciles de escribir que los secuenciales, porque la concurrencia introduce nuevos tipos de errores de software, siendo las condiciones de carrera los m&aacute;s comunes. La comunicaci&oacute;n y sincronizaci&oacute;n entre diferentes subtareas son algunos de los mayores obst&aacute;culos para obtener un buen rendimiento del programa paralelo. La m&aacute;xima aceleraci&oacute;n posible de un programa como resultado de la paralelizaci&oacute;n se conoce como la ley de Amdahl.</p>
+<p style="text-align: justify;"><span style="background-color: #ff99cc;"><strong><span class="textoGral">Ley de Amdahl y ley de Gustafson</span></strong></span></p>
+<p style="text-align: justify;">Idealmente, la aceleraci&oacute;n a partir de la paralelizaci&oacute;n es lineal, doblar el n&uacute;mero de elementos de procesamiento debe reducir a la mitad el tiempo de ejecuci&oacute;n y doblarlo por segunda vez debe nuevamente reducir el tiempo a la mitad. Sin embargo, muy pocos algoritmos paralelos logran una aceleraci&oacute;n &oacute;ptima. La mayor&iacute;a tienen una aceleraci&oacute;n casi lineal para un peque&ntilde;o n&uacute;mero de elementos de procesamiento, y pasa a ser constante para un gran n&uacute;mero de elementos de procesamiento.</p>
+<p style="text-align: justify;">La aceleraci&oacute;n potencial de un algoritmo en una plataforma de c&oacute;mputo en paralelo est&aacute; dada por la ley de Amdahl, formulada originalmente por Gene Amdahl en la d&eacute;cada de 1960. Esta se&ntilde;ala que una peque&ntilde;a porci&oacute;n del programa que no pueda paralelizarse va a limitar la aceleraci&oacute;n que se logra con la paralelizaci&oacute;n. Los programas que resuelven problemas matem&aacute;ticos o ingenieriles t&iacute;picamente consisten en varias partes paralelizables y varias no paralelizables (secuenciales).</p>
+<p style="text-align: justify;">La ley de Gustafson es otra ley en computaci&oacute;n que est&aacute; en estrecha relaci&oacute;n con la ley de Amdahl. Ambas leyes asumen que el tiempo de funcionamiento de la parte secuencial del programa es independiente del n&uacute;mero de procesadores. La ley de Amdahl supone que todo el problema es de tama&ntilde;o fijo, por lo que la cantidad total de trabajo que se har&aacute; en paralelo tambi&eacute;n es independiente del n&uacute;mero de procesadores, mientras que la ley de Gustafson supone que la cantidad total de trabajo que se har&aacute; en paralelo var&iacute;a linealmente con el n&uacute;mero de procesadores.</p>
+<p style="text-align: justify;"><span style="background-color: #ff99cc;"><strong><span class="textoGral">Dependencias.</span></strong></span></p>
+<p style="text-align: justify;">Entender la dependencia de datos es fundamental en la implementaci&oacute;n de algoritmos paralelos. Ning&uacute;n programa puede ejecutar m&aacute;s r&aacute;pidamente que la cadena m&aacute;s larga de c&aacute;lculos dependientes (conocida como la ruta cr&iacute;tica), ya que los c&aacute;lculos que dependen de c&aacute;lculos previos en la cadena deben ejecutarse en orden. Sin embargo, la mayor&iacute;a de los algoritmos no consisten s&oacute;lo de una larga cadena de c&aacute;lculos dependientes; generalmente hay oportunidades para ejecutar c&aacute;lculos independientes en paralelo. Sea Pi y Pj dos segmentos del programa. Las condiciones de Bernstein describen cuando los dos segmentos son independientes y pueden ejecutarse en paralelo. Para Pi, sean Ii todas las variables de entrada y Oi las variables de salida, y del mismo modo para Pj. Pi yPj son independientes si satisfacen.</p>
+<p style="text-align: justify;">Una violaci&oacute;n de la primera condici&oacute;n introduce una dependencia de flujo, correspondiente al primer segmento que produce un resultado utilizado por el segundo segmento. La segunda condici&oacute;n representa una anti-dependencia, cuando el segundo segmento (Pj) produce una variable que necesita el primer segmento (Pi). La tercera y &uacute;ltima condici&oacute;n representa una dependencia de salida: Cuando dos segmentos escriben en el mismo lugar, el resultado viene del &uacute;ltimo segmento ejecutado.</p>
+<p style="text-align: justify;"><strong><span class="textoGral" style="background-color: #ff99cc;">Condiciones de carrera, exclusi&oacute;n mutua, sincronizaci&oacute;n, y desaceleraci&oacute;n paralela.</span></strong></p>
+<p style="text-align: justify;">Las subtareas en un programa paralelo a menudo son llamadas hilos. Algunas arquitecturas de computaci&oacute;n paralela utilizan versiones m&aacute;s peque&ntilde;as y ligeras de hilos conocidas como hebras, mientras que otros utilizan versiones m&aacute;s grandes conocidos como procesos. Sin embargo, &laquo;hilos&raquo; es generalmente aceptado como un t&eacute;rmino gen&eacute;rico para las subtareas. Los hilos a menudo tendr&aacute;n que actualizar algunas variables que se comparten entre ellos. Las instrucciones entre los dos programas pueden entrelazarse en cualquier orden.</p>
+<p style="text-align: justify;">Las aplicaciones a menudo se clasifican seg&uacute;n la frecuencia con que sus subtareas se sincronizan o comunican entre s&iacute;. Una aplicaci&oacute;n muestra un paralelismo de grano fino si sus subtareas deben comunicase muchas veces por segundo, se considera paralelismo de grano grueso si no se comunican muchas veces por segundo, y es vergonzosamente paralelo si nunca o casi nunca se tienen que comunicar.</p>
+<p style="text-align: justify;">Aplicaciones vergonzosamente paralelas son consideradas las m&aacute;s f&aacute;ciles de paralelizar.</p>
+<p style="text-align: justify;"><strong><span class="textoGral" style="background-color: #ff99cc;">Grano de paralelismo.</span></strong></p>
+<ul style="text-align: justify;">
+<li>Muy grueso: Programas.</li>
+<li>Grueso: Subprogramas, tareas.</li>
+<li>Fino: Instrucci&oacute;n.</li>
+<li>Muy fino: Fases de instrucci&oacute;n.</li>
+</ul>
+<p style="text-align: justify;"><span style="background-color: #ff99cc;"><strong><span class="textoGral">Modelos de consistencia.</span></strong></span></p>
+<p style="text-align: justify;">Los lenguajes de programaci&oacute;n en paralelo y computadoras paralelas deben tener un modelo de consistencia de datos tambi&eacute;n conocido como un modelo de memoria.</p>
+<p style="text-align: justify;">El modelo de consistencia define reglas para las operaciones en la memoria del ordenador y c&oacute;mo se producen los resultados.</p>
+<p style="text-align: justify;">Uno de los primeros modelos de consistencia fue el modelo de consistencia secuencial de Leslie Lamport. La consistencia secuencial es la propiedad de un programa en la que su ejecuci&oacute;n en paralelo produce los mismos resultados que un programa secuencial. Espec&iacute;ficamente, es un programa secuencial consistente si "... los resultados de una ejecuci&oacute;n son los mismos que se obtienen si las operaciones de todos los procesadores son ejecutadas en un orden secuencial, y las operaciones de cada procesador individual aparecen en esta secuencia en el orden especificado por el programa".</p>
+<h4 style="text-align: justify;"><span class="subtitulo" style="background-color: #ffff99;">Taxonom&iacute;a de Flynn.</span></h4>
+<p style="text-align: justify;"><strong><span class="textoGral" style="background-color: #ff99cc;">Single Instruction, Single Data (SISD).</span></strong></p>
+<p style="text-align: justify;">Hay un elemento de procesamiento, que tiene acceso a un &uacute;nico programa y a un almacenamiento de datos. En cada paso, el elemento de procesamiento carga una instrucci&oacute;n y la informaci&oacute;n correspondiente y ejecuta esta instrucci&oacute;n. El resultado es guardado de vuelta en el almacenamiento de datos. Luego SISD es el computador secuencial convencional, de acuerdo al modelo de von Neumann.</p>
+<p style="text-align: justify;"><span style="background-color: #ff99cc;"><strong><span class="textoGral">Multiple Instruction, Single Data (MISD).</span></strong></span></p>
+<p style="text-align: justify;">Hay m&uacute;ltiples elementos de procesamiento, en el que cada cual tiene memoria privada del programa, pero se tiene acceso com&uacute;n a una memoria global de informaci&oacute;n. En cada paso, cada elemento de procesamiento de obtiene la misma informaci&oacute;n de la memoria y carga una instrucci&oacute;n de la memoria privada del programa. Luego, las instrucciones posiblemente diferentes de cada unidad, son ejecutadas en paralelo, usando la informaci&oacute;n (id&eacute;ntica) recibida anteriormente. Este modelo es muy restrictivo y no se ha usado en ning&uacute;n computador de tipo comercial.</p>
+<p style="text-align: justify;"><strong><span class="textoGral" style="background-color: #ff99cc;">Single Instruction, Multiple Data (SIMD).</span></strong></p>
+<p style="text-align: justify;">Hay m&uacute;ltiples elementos de procesamiento, en el que cada cual tiene acceso privado a la memoria de informaci&oacute;n (compartida o distribuida). Sin embargo, hay una sola memoria de programa, desde la cual una unidad de procesamiento especial obtiene y despacha instrucciones. En cada paso, cada unidad de procesamiento obtiene la misma instrucci&oacute;n y carga desde su memoria privada un elemento de informaci&oacute;n y ejecuta esta instrucci&oacute;n en dicho elemento.</p>
+<p style="text-align: justify;">Entonces, la instrucci&oacute;n es s&iacute;ncronamente aplicada en paralelo por todos los elementos de proceso a diferentes elementos de informaci&oacute;n. Para aplicaciones con un grado significante de paralelismo de informaci&oacute;n, este acercamiento puede ser muy eficiente. Ejemplos pueden ser aplicaciones multimedia y algoritmos de gr&aacute;ficos de computadora.</p>
+<p style="text-align: justify;"><strong><span class="textoGral" style="background-color: #ff99cc;">Multiple Instruction, Multiple Data (MIMD).</span></strong></p>
+<p style="text-align: justify;">Hay m&uacute;ltiples unidades de procesamiento, en la cual cada una tiene tanto instrucciones como informaci&oacute;n separada. Cada elemento ejecuta una instrucci&oacute;n distinta en un elemento de informaci&oacute;n distinto. Los elementos de proceso trabajan as&iacute;ncronamente. Los clusters son ejemplo son ejemplos del modelo MIMD.</p>
+<h2 style="text-align: justify;">4.2 Tipos de computaci&oacute;n paralela</h2>
+<p><strong><span class="textoGral" style="background-color: #ff99cc;">Paralelismo a nivel de bit.</span></strong></p>
+<p style="text-align: justify;">Desde el advenimiento de la integraci&oacute;n a gran escala (VLSI) como tecnolog&iacute;a de fabricaci&oacute;n de chips de computadora en la d&eacute;cada de 1970 hasta alrededor de 1986, la aceleraci&oacute;n en la arquitectura de computadores se lograba en gran medida duplicando el tama&ntilde;o de la palabra en la computadora, la cantidad de informaci&oacute;n que el procesador puede manejar por ciclo. El aumento del tama&ntilde;o de la palabra reduce el n&uacute;mero de instrucciones que el procesador debe ejecutar para realizar una operaci&oacute;n en variables cuyos tama&ntilde;os son mayores que la longitud de la palabra. Por ejemplo, cuando un procesador de 8 bits debe sumar dos enteros de 16 bits, el procesador primero debe adicionar los 8 bits de orden inferior de cada n&uacute;mero entero con la instrucci&oacute;n de adici&oacute;n, a continuaci&oacute;n, a&ntilde;adir los 8 bits de orden superior utilizando la instrucci&oacute;n de adici&oacute;n con acarreo que tiene en cuenta el bit de acarreo de la adici&oacute;n de orden inferior, en este caso un procesador de 8 bits requiere dos instrucciones para completar una sola operaci&oacute;n, en donde un procesador de 16 bits necesita una sola instrucci&oacute;n para poder completarla.</p>
+<p style="text-align: justify;">Hist&oacute;ricamente, los microprocesadores de 4 bits fueron sustituidos por unos de 8 bits, luego de 16 bits y 32 bits, esta tendencia general lleg&oacute; a su fin con la introducci&oacute;n de procesadores de 64 bits, lo que ha sido un est&aacute;ndar en la computaci&oacute;n de prop&oacute;sito general durante la &uacute;ltima d&eacute;cada.</p>
+<p style="text-align: justify;"><strong><span class="textoGral" style="background-color: #ff99cc;">Paralelismo a nivel de instrucci&oacute;n.</span></strong></p>
+<p style="text-align: justify;">Los procesadores modernos tienen ''pipeline'' de instrucciones de varias etapas. Cada etapa en el pipeline corresponde a una acci&oacute;n diferente que el procesador realiza en la instrucci&oacute;n correspondiente a la etapa; un procesador con un pipeline de N etapas puede tener hasta n instrucciones diferentes en diferentes etapas de finalizaci&oacute;n. El ejemplo can&oacute;nico de un procesador segmentado es un procesador RISC, con cinco etapas: pedir instrucci&oacute;n, decodificar, ejecutar, acceso a la memoria y escritura. El procesador Pentium 4 ten&iacute;a un pipeline de 35 etapas.</p>
+<p style="text-align: justify;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQis9Aeft4LeYHX9heAscuGRfcucpwnHMc0K0lBDqR8PtlCkfBEJj0AOadNU8_WX8wsMHI&amp;usqp=CAU" alt="" width="493" height="346" /></p>
+<p style="text-align: justify;">Adem&aacute;s del paralelismo a nivel de instrucci&oacute;n del pipelining, algunos procesadores pueden ejecutar m&aacute;s de una instrucci&oacute;n a la vez. Estos son conocidos como procesadores superescalares. Las instrucciones pueden agruparse juntas s&oacute;lo si no hay dependencia de datos entre ellas. El scoreboarding y el algoritmo de Tomasulo &mdash; que es similar a scoreboarding pero hace uso del renombre de registros&mdash; son dos de las t&eacute;cnicas m&aacute;s comunes para implementar la ejecuci&oacute;n fuera de orden y la paralelizaci&oacute;n a nivel de instrucci&oacute;n.</p>
+<p style="text-align: justify;"><span style="background-color: #ff99cc;"><strong><span class="textoGral">Paralelismo de datos.</span></strong></span></p>
+<p style="text-align: justify;">El paralelismo de datos es el paralelismo inherente en programas con ciclos, que se centra en la distribuci&oacute;n de los datos entre los diferentes nodos computacionales que deben tratarse en paralelo. "La paralelizaci&oacute;n de ciclos conduce a menudo a secuencias similares de operaciones &mdash;no necesariamente id&eacute;nticas&mdash; o funciones que se realizan en los elementos de una gran estructura de datos". Muchas de las aplicaciones cient&iacute;ficas y de ingenier&iacute;a muestran paralelismo de datos.</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://www.researchgate.net/profile/Demetrio-Rey/publication/230744921/figure/fig2/AS:339788239523849@1458023237826/Figura-2-Cascada-de-paralelismo-de-datos-data-parallel-pipeline-En-este-ejemplo-de.png" alt="" width="618" height="299" /></p>
+<p style="text-align: justify;">Una dependencia de terminaci&oacute;n de ciclo es la dependencia de una iteraci&oacute;n de un ciclo en la salida de una o m&aacute;s iteraciones anteriores. Las dependencias de terminaci&oacute;n de ciclo evitan la paralelizaci&oacute;n de ciclos.</p>
+<p style="text-align: justify;"><span style="background-color: #ff99cc;"><strong><span class="textoGral">Paralelismo de tareas.</span></strong></span></p>
+<p style="text-align: justify;">Paralelismo de tareas es un paradigma de la programaci&oacute;n concurrente que consiste en asignar distintas tareas a cada uno de los procesadores de un sistema de c&oacute;mputo. En consecuencia, cada procesador efectuar&aacute; su propia secuencia de operaciones.</p>
+<p style="text-align: justify;">En su modo m&aacute;s general, el paralelismo de tareas se representa mediante un grafo de tareas, el cual es subdividido en subgrafos que son luego asignados a diferentes procesadores. De la forma como se corte el grafo, depende la eficiencia de paralelismo resultante. La partici&oacute;n y asignaci&oacute;n &oacute;ptima de un grafo de tareas para ejecuci&oacute;n concurrente es un problema NP-completo, por lo cual en la pr&aacute;ctica se dispone de m&eacute;todos heur&iacute;sticos aproximados para lograr una asignaci&oacute;n cercana a la &oacute;ptima.</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="http://ferestrepoca.github.io/paradigmas-de-programacion/paralela/paralela_teoria/images/tipo-tareas.jpg" alt="" width="470" height="312" /></p>
+<p style="text-align: justify;">Sin embargo, existen ejemplos de paralelismo de tareas restringido que son de inter&eacute;s en programaci&oacute;n concurrente. Tal es el caso del paralelismo encauzado, en el cual el grafo tiene forma de cadena, donde cada nodo recibe datos del nodo previo y sus resultados son enviados al nodo siguiente. El car&aacute;cter simplificado de este modelo permite obtener paralelismo de eficiencia &oacute;ptima.</p>
+<p style="text-align: justify;">&nbsp;</p>
+<h3 style="text-align: justify;">4.2.1 Clasificaci&oacute;n</h3>
+<p style="text-align: justify;">Las computadoras paralelas se pueden clasificar de acuerdo con el nivel en el que el hardware soporta paralelismo. Esta clasificaci&oacute;n es an&aacute;loga a la distancia entre los nodos b&aacute;sicos de c&oacute;mputo. Estos no son excluyentes entre s&iacute;, por ejemplo, los grupos de multiprocesadores sim&eacute;tricos son relativamente comunes.</p>
+<p style="text-align: justify;"><strong>Computaci&oacute;n multin&uacute;cleo:</strong>&nbsp;un procesador multin&uacute;cleo es un procesador que incluye m&uacute;ltiples unidades de ejecuci&oacute;n (n&uacute;cleos) en el mismo chip. Un procesador multin&uacute;cleo puede ejecutar m&uacute;ltiples instrucciones por ciclo de secuencias de instrucciones m&uacute;ltiples.</p>
+<p style="text-align: justify;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://www.profesionalreview.com/wp-content/uploads/2019/06/procesador-multinucleo-1280x720.jpg" width="399" height="224" /></p>
+<p style="text-align: justify;"><strong>Multiprocesamiento sim&eacute;trico:</strong>&nbsp;un multiprocesador sim&eacute;trico (SMP) es un sistema computacional con m&uacute;ltiples procesadores id&eacute;nticos que comparten memoria y se conectan a trav&eacute;s de un bus. La contenci&oacute;n del bus previene el escalado de esta arquitectura.</p>
+<p style="text-align: justify;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://aiu.edu/publications/student/spanish/180-207/images/SISTEMAS-OPERATIVOS-PROCESOS-CONCURRENTES-Unidad-III/2.gif" alt="simetrico" width="527" height="353" /></p>
+<p style="text-align: justify;"><strong>Computaci&oacute;n en cl&uacute;ster:</strong>&nbsp;un cl&uacute;ster es un grupo de ordenadores d&eacute;bilmente acoplados que trabajan en estrecha colaboraci&oacute;n, de modo que en algunos aspectos pueden considerarse como un solo equipo.</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://cdn-icons-png.flaticon.com/512/2620/2620313.png" width="326" height="326" /></p>
+<p style="text-align: justify;"><strong>Procesamiento paralelo masivo:</strong>&nbsp;tienden a ser m&aacute;s grandes que los cl&uacute;steres, con &laquo;mucho m&aacute;s&raquo; de 100 procesadores. En un MPP, cada CPU tiene su propia memoria y una copia del sistema operativo y la aplicaci&oacute;n.</p>
+<p style="text-align: justify;"><strong>Computaci&oacute;n distribuida:</strong>&nbsp;la computaci&oacute;n distribuida es la forma m&aacute;s distribuida de la computaci&oacute;n paralela. Se hace uso de ordenadores que se comunican a trav&eacute;s de la Internet para trabajar en un problema dado.</p>
+<p style="text-align: justify;"><strong>Computadoras paralelas especializadas:</strong>&nbsp;dentro de la computaci&oacute;n paralela, existen dispositivos paralelos especializados que generan inter&eacute;s. Aunque no son espec&iacute;ficos para un dominio, tienden a ser aplicables s&oacute;lo a unas pocas clases de problemas paralelos.</p>
+<p style="text-align: justify;"><strong>C&oacute;mputo reconfigurable con arreglos de compuertas programables:</strong>&nbsp;el c&oacute;mputo reconfigurable es el uso de un arreglo de compuertas programables (FPGA) como coprocesador de un ordenador de prop&oacute;sito general.</p>
+<p style="text-align: justify;"><strong>C&oacute;mputo de prop&oacute;sito general en unidades de procesamiento gr&aacute;fico (GPGPU):</strong>&nbsp;es una tendencia relativamente reciente en la investigaci&oacute;n de ingenier&iacute;a inform&aacute;tica. Los GPUs son co-procesadores que han sido fuertemente optimizados para procesamiento de gr&aacute;ficos por computadora.</p>
+<p style="text-align: justify;"><strong>Circuitos integrados de aplicaci&oacute;n espec&iacute;fica:</strong>&nbsp;debido a que un ASIC (por definici&oacute;n) es espec&iacute;fico para una aplicaci&oacute;n dada, puede ser completamente optimizado para esa aplicaci&oacute;n. Como resultado, para una aplicaci&oacute;n dada, un ASIC tiende a superar a un ordenador de prop&oacute;sito general.</p>
+<p style="text-align: justify;"><strong>Procesadores vectoriales:</strong>&nbsp;pueden ejecutar la misma instrucci&oacute;n en grandes conjuntos de datos. Tienen operaciones de alto nivel que trabajan sobre arreglos lineales de n&uacute;meros o vectores.</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="http://1.bp.blogspot.com/-yIgcJRZnNms/UXSovrmyczI/AAAAAAAAAgI/Whlx2fCqZKg/s1600/P1.jpg" alt="vectoriales" width="390" height="328" /></p>
+<h3>4.2.2 Arquitectura de computadoras secuenciales</h3>
+<p style="text-align: justify;">A diferencia de los sistemas combinacionales, en los sistemas secuenciales, los valores de las salidas, en un momento dado, no dependen exclusivamente de los valores de las entradas en dicho momento, sino tambi&eacute;n dependen del estado anterior o estado interno. El sistema secuencial m&aacute;s simple es el biestable, de los cuales, el de tipo D (o cerrojo) es el m&aacute;s utilizado actualmente.</p>
+<p style="text-align: justify;">El sistema secuencial requiere de la utilizaci&oacute;n de un dispositivo de memoria que pueda almacenar la historia pasada de sus entradas (denominadas variables de estado) y le permita mantener su estado durante alg&uacute;n tiempo, estos dispositivos de memoria pueden ser sencillos como un simple retardador o celdas de memoria de tipo DRAM, SRAM o multivibradores biestables tambi&eacute;n conocido como Flip-Flop.</p>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff00;">Tipos de sistemas secuenciales</span></p>
+<p style="text-align: justify;">En este tipo de circuitos entra un factor que no se hab&iacute;a considerado en los circuitos combinacionales, dicho factor es el tiempo, seg&uacute;n como manejan el tiempo se pueden clasificar en: circuitos secuenciales s&iacute;ncronos y circuitos secuenciales as&iacute;ncronos.</p>
+<ul style="text-align: justify;">
+<li><span style="background-color: #ffff99;">Circuitos secuenciales as&iacute;ncronos</span>.</li>
+</ul>
+<p style="text-align: justify;">En circuitos secuenciales as&iacute;ncronos los cambios de estados ocurren al ritmo natural asociado a las compuertas l&oacute;gicas utilizadas en su implementaci&oacute;n, lo que produce retardos en cascadas entre los biestables del circuito, es decir no utilizan elementos especiales de memoria, lo que puede ocasionar algunos problemas de funcionamiento, ya que estos retardos naturales no est&aacute;n bajo el control del dise&ntilde;ador y adem&aacute;s no son id&eacute;nticos en cada compuerta l&oacute;gica.</p>
+<ul style="text-align: justify;">
+<li><span style="background-color: #ffff99;">Circuitos secuenciales s&iacute;ncronos.</span></li>
+</ul>
+<p style="text-align: justify;">Los circuitos secuenciales s&iacute;ncronos solo permiten un cambio de estado en los instantes marcados o autorizados por una se&ntilde;al de sincronismo de tipo oscilatorio denominada reloj (cristal o circuito capaz de producir una serie de pulsos regulares en el tiempo), lo que soluciona los problemas que tienen los circuitos as&iacute;ncronos originados por cambios de estado no uniformes dentro del sistema o circuito.</p>
+<p style="text-align: justify;">&nbsp;</p>
+<h3 style="text-align: justify;">4.2.3 Organizacion de direcciones de memoria</h3>
+<p style="text-align: justify;">La memoria principal en un ordenador en paralelo puede ser compartida &mdash;compartida entre todos los elementos de procesamiento en un &uacute;nico espacio de direcciones&mdash;, o distribuida &mdash;cada elemento de procesamiento tiene su propio espacio local de direcciones&mdash;. El t&eacute;rmino memoria distribuida se refiere al hecho de que la memoria se distribuye l&oacute;gicamente, pero a menudo implica que tambi&eacute;n se distribuyen f&iacute;sicamente. La memoria distribuida- compartida y la virtualizaci&oacute;n de memoria combinan los dos enfoques, donde el procesador tiene su propia memoria local y permite acceso a la memoria de los procesadores que no son locales. Los accesos a la memoria local suelen ser m&aacute;s r&aacute;pidos que los accesos a memoria no local.</p>
+<p style="text-align: justify;">Las arquitecturas de ordenador en las que cada elemento de la memoria principal se puede acceder con igual latencia y ancho de banda son conocidas como arquitecturas de acceso uniforme a memoria (UMA). T&iacute;picamente, s&oacute;lo se puede lograr con un sistema de memoria compartida, donde la memoria no est&aacute; distribuida f&iacute;sicamente. Un sistema que no tiene esta propiedad se conoce como arquitectura de acceso a memoria no uniforme (NUMA). Los sistemas de memoria distribuidos tienen acceso no uniforme a la memoria.</p>
+<h2 style="text-align: justify;">4.3 Sistemas de memoria compartida: multiprocesadores</h2>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff99;">Sistemas de memoria compartida (multiprocesadores)</span></p>
+<ul style="text-align: justify;">
+<li>Todos los procesadores acceden a una memoria com&uacute;n.</li>
+<li>La comunicaci&oacute;n entre procesadores se hace a trav&eacute;s de la memoria.</li>
+<li>Se necesitan primitivas de sincronismo para asegurar el intercambio de datos.</li>
+</ul>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff99;">Estructura de los multiprocesadores de memoria compartida.</span></p>
+<p style="text-align: justify;">La mayor&iacute;a de los multiprocesadores comerciales son del tipo UMA (Uniform Memory Access): todos los procesadores tienen igual tiempo de acceso a la memoria compartida. En la arquitectura UMA los procesadores se conectan a la memoria a trav&eacute;s de un bus, una red multietapa o un conmutador de barras cruzadas (red multietapa o un conmutador de barras cruzadas (crossbar crossbar) y disponen de su propia ) y disponen de su propia memoria cach&eacute;. Los procesadores tipo NUMA (Non Uniform Memory Access) presentan tiempos de acceso a la memoria compartida que dependen de la ubicaci&oacute;n del elemento de proceso y la memoria.</p>
+<p><img id="interconex" style="display: block; margin-left: auto; margin-right: auto;" src="https://tareasuniversitarias.com/wp-content/uploads/2012/12/Multiprocesadores-de-Memoria-Compartida.jpg" alt="memoriacompartida" width="417" height="242" /></p>
+<h3 style="text-align: justify;"><span id="medioComp" class="subtitulo">4.3.1 Redes de interconexi&oacute;n din&aacute;mica (indirecta)</span>.</h3>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff99;">Medio compartido.</span></p>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff99;">Conexi&oacute;n por bus compartido.</span></p>
+<p style="text-align: justify;">Es la organizaci&oacute;n m&aacute;s com&uacute;n en los computadores personales y servidores.</p>
+<p style="text-align: justify;">El bus consta de l&iacute;neas de direcci&oacute;n, datos y control para implementar:</p>
+<ul style="text-align: justify;">
+<li>El protocolo de transferencias de datos con la memoria.</li>
+<li>El arbitraje del acceso al bus cuando m&aacute;s de un procesador compite por utilizarlo.</li>
+</ul>
+<p style="text-align: justify;">Los procesadores utilizan cach&eacute;s locales para:</p>
+<ul style="text-align: justify;">
+<li>Reducir el tiempo medio de acceso a memoria, como en un monoprocesador.</li>
+<li>Disminuir la utilizaci&oacute;n del bus compartido.</li>
+</ul>
+<p style="text-align: justify;">&nbsp;</p>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff99;">Protocolos de transferencia de ciclo partido.</span></p>
+<p style="text-align: justify;">La operaci&oacute;n de lectura se divide en dos transacciones no continuas de acceso al bus. La primera es de petici&oacute;n de lectura que realiza el m&aacute;ster (procesador) sobre el slave (memoria). Una vez realizada la petici&oacute;n el m&aacute;ster abandona el bus. Cuando el slave dispone del dato le&iacute;do, inicia un ciclo de bus actuando como m&aacute;ster para enviar el dato al antiguo m&aacute;ster, que ahora act&uacute;a como slave.</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://tareasuniversitarias.com/wp-content/uploads/2013/02/S%C3%ADncronos.jpg" width="413" height="231" /></p>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff99;">Protocolo de arbitraje distribuido.</span></p>
+<p style="text-align: justify;">La responsabilidad del arbitraje se distribuye por los diferentes procesadores conectados al bus.</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://slideplayer.es/slide/12574263/75/images/17/Modo+de+arbitraje+distribuido.jpg" width="400" height="300" /></p>
+<p style="text-align: justify;">Arbitro-i concede el bus al procesador Pi activando Gi si:</p>
+<ol style="text-align: justify;">
+<li>Pi ha activado su l&iacute;nea de petici&oacute;n de bus Ri.</li>
+<li>La l&iacute;nea de ocupaci&oacute;n est&aacute; desactivada.</li>
+<li>La l&iacute;nea de entrada de prioridad pi-1 est&aacute; activada.</li>
+</ol>
+<p style="text-align: justify;">El &aacute;rbitro i activa su l&iacute;nea de prioridad pi si:</p>
+<ol style="text-align: justify;">
+<li>Pi no ha activado su l&iacute;nea de petici&oacute;n Ri.</li>
+<li id="conmu">La l&iacute;nea de prioridad pi-1 est&aacute; activa.</li>
+<li>Finaliza una operaci&oacute;n de acceso al bus.</li>
+</ol>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff99;">Conmutadas.</span></p>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff99;">Conexi&oacute;n por conmutadores crossbar.</span></p>
+<p style="text-align: justify;">Cada procesador (Pi) y cada m&oacute;dulo de memoria (Mi) tienen su propio bus. Existe un conmutador (S) en los puntos de intersecci&oacute;n que permite conectar un bus de memoria con un bus de procesador.</p>
+<p style="text-align: justify;">Para evitar conflictos cuando m&aacute;s de un procesador pretende acceder al mismo m&oacute;dulo de memoria se establece un orden de prioridad. Se trata de una red sin bloqueo con una conectividad completa pero de alta complejidad.</p>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff99;">Conexi&oacute;n por red multietapa.</span></p>
+<ul style="text-align: justify;">
+<li>Representan una alternativa intermedia de conexi&oacute;n entre el bus y el crossbar.</li>
+<li>Es de menor complejidad que el crossbar pero mayor que el bus simple.</li>
+<li>La conectividad es mayor que la del bus simple pero menor que la del crossbar.</li>
+<li>Se compone de varias etapas alternativas de conmutadores simples y redes de interconexi&oacute;n.</li>
+</ul>
+<p style="text-align: justify;">En general las redes multietapa responden a este esquema.</p>
+<h2 style="text-align: justify;">4.4 Sistemas de memoria distribuida: multicomputadores</h2>
+<p style="text-align: justify;">Cada procesador tiene su propia memoria y la comunicaci&oacute;n se realiza por intercambio expl&iacute;cito de mensajes a trav&eacute;s de una red.</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://dayross.github.io/MEDIA/memoDist.png" /></p>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff99;">Ventajas</span></p>
+<ul style="text-align: justify;">
+<li>El n&uacute;mero de nodos puede ir desde algunas decenas hasta varios miles (o m&aacute;s).</li>
+<li>La arquitectura de paso de mensajes tiene ventajas sobre la de memoria compartida cuando el n&uacute;mero de procesadores es grande.</li>
+<li>El n&uacute;mero de canales f&iacute;sicos entre nodos suele oscilar entre cuatro y ocho.</li>
+<li>Esta arquitectura es directamente escalable y presenta un bajo coste para sistemas grandes.</li>
+<li>Un problema se especifica como un conjunto de procesos que se comunican entre s&iacute; y que se hacen corresponder sobre la estructura f&iacute;sica de procesadores.</li>
+</ul>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff99;">Desventajas</span></p>
+<ul>
+<li style="text-align: justify;">Se necesitan t&eacute;cnicas de sincronizaci&oacute;n para acceder a las variables compartidas.</li>
+<li style="text-align: justify;">La contenci&oacute;n en la memoria puede reducir significativamente la velocidad.</li>
+<li style="text-align: justify;">No son f&aacute;cilmente escalables a un gran n&uacute;mero de procesadores.</li>
+</ul>
+<h3>4.4.1 Redes de interconexion est&aacute;ticas</h3>
+<p style="text-align: justify;">Los multicomputadores utilizan redes est&aacute;ticas con enlaces directos entre nodos. Cuando un nodo recibe un mensaje lo procesa si viene dirigido a dicho nodo. Si el mensaje no va dirigido al nodo receptor lo reenv&iacute;a a otro por alguno de sus enlaces de salida siguiendo un protocolo de encaminamiento.</p>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff99;">Propiedades m&aacute;s significativas</span></p>
+<ul>
+<li style="text-align: justify;">Topolog&iacute;a de la red: determina el patr&oacute;n de interconexi&oacute;n entre nodos.</li>
+<li style="text-align: justify;">Di&aacute;metro de la red: distancia m&aacute;xima de los caminos m&aacute;s cortos entre dos nodos de la red.</li>
+<li style="text-align: justify;">Latencia: retardo de tiempo en el peor caso para un mensaje transferido a trav&eacute;s de la red.</li>
+<li style="text-align: justify;">Ancho de banda: Transferencia m&aacute;xima de datos en Mbytes/segundo.</li>
+<li style="text-align: justify;">Escalabilidad: posibilidad de expansi&oacute;n modular de la red.</li>
+<li style="text-align: justify;">Grado de un nodo: n&uacute;mero de enlaces o canales que inciden en el nodo.</li>
+<li style="text-align: justify;">Algoritmo de encaminamiento: determina el camino que debe seguir un mensaje desde el nodo emisor al nodo receptor.</li>
+</ul>
+<h2>4.5 Casos de estudio</h2>
+<p style="text-align: justify;">Por numerosos motivos, el procesamiento distribuido se ha convertido en un &aacute;rea de gran importancia e inter&eacute;s dentro de la ciencia de la computaci&oacute;n, produciendo profundas transformaciones en las l&iacute;neas de investigaci&oacute;n y desarrollo.</p>
+<p style="text-align: justify;">Interesa realizar investigaci&oacute;n en la especificaci&oacute;n, transformaci&oacute;n, optimizaci&oacute;n y evaluaci&oacute;n de algoritmos distribuidos y paralelos.</p>
+<p style="text-align: justify;">Esto incluye el dise&ntilde;o y desarrollo de sistemas paralelos, la transformaci&oacute;n de algoritmos secuenciales en paralelos, y las m&eacute;tricas de evaluaci&oacute;n de performance sobre distintas plataformas de soporte (hardware y software). M&aacute;s all&aacute; de las mejoras constantes en las arquitecturas f&iacute;sicas de soporte, uno de los mayores desaf&iacute;os se centra en c&oacute;mo aprovechar al m&aacute;ximo la potencia de las mismas.</p>
+<p style="text-align: justify;"><span class="textoGral">L&iacute;neas de investigaci&oacute;n y desarrollo</span></p>
+<ul style="text-align: justify;">
+<li>Paralelizaci&oacute;n de algoritmos secuenciales. Dise&ntilde;o y optimizaci&oacute;n de algoritmos.</li>
+<li>Arquitecturas multicore y multithreading en multicore.</li>
+<li>Modelos de representaci&oacute;n y predicci&oacute;n de performance de algoritmos paralelos.</li>
+<li>Mapping y scheduling de aplicaciones paralelas sobre distintas arquitecturas multiprocesador.</li>
+<li>M&eacute;tricas del paralelismo. Speedup, eficiencia, rendimiento, granularidad, superlinealidad.</li>
+<li>Balance de carga est&aacute;tico y din&aacute;mico. T&eacute;cnicas de balanceo de carga.</li>
+<li>An&aacute;lisis de los problemas de migraci&oacute;n y asignaci&oacute;n &oacute;ptima de procesos y datos a procesadores.</li>
+<li>Patrones de dise&ntilde;o de algoritmos paralelos.</li>
+<li>Escalabilidad de algoritmos paralelos en arquitecturas multiprocesador distribuidas.</li>
+<li>Implementaci&oacute;n de soluciones sobre diferentes modelos de arquitectura homog&eacute;neas y heterog&eacute;neas.</li>
+<li>Laboratorios remotos para el acceso transparente a recursos de c&oacute;mputo paralelo.</li>
+</ul>
+<p style="text-align: justify;">Algunas Implementaciones con procesamiento paralelo.</p>
+<p style="text-align: justify;"><span class="textoGral" style="background-color: #ffff99;">NVIDIA</span></p>
+<p style="text-align: justify;">Capa f&iacute;sica (physical layer):</p>
+<ul style="text-align: justify;">
+<li>GPU PhysX.</li>
+<li>CPU PhysX.</li>
+</ul>
+<p style="text-align: justify;">Capa de gr&aacute;ficos (graphics layer):</p>
+<ul style="text-align: justify;">
+<li>GPU DirectX Windows.</li>
+</ul>
+<p style="text-align: justify;">Intel Capa f&iacute;sica (physical layer):</p>
+<ul style="text-align: justify;">
+<li>No GPU PhysX.</li>
+<li>CPU Havok.</li>
+</ul>
+<p style="text-align: justify;">Capa de gr&aacute;ficos (graphics layer):</p>
+<ul style="text-align: justify;">
+<li>GPU DirectX Windows.</li>
+</ul>
+<p style="text-align: justify;">AMD Capa f&iacute;sica (physical layer):</p>
+<ul style="text-align: justify;">
+<li>No GPU PhysX.</li>
+<li>CPU Havok.</li>
+</ul>
+<p style="text-align: justify;">Capa de gr&aacute;ficos (graphics layer):</p>
+<ul>
+<li style="text-align: justify;">GPU DirectX Windows.</li>
+</ul>
+
+<h2 style="text-align: center;"><em><strong><span class="textoClaro">Instituto Tecnol&oacute;gico de Saltillo<br /></span><span class="textoPeque&ntilde;o">Blvd. Venustiano Carranza #2400, Col. Tecnol&oacute;gico, Saltillo, Coahuila, M&eacute;xico C.P. 25280.<br />Contacto Email: contacto@tecnm.mx.<br />Tel&eacute;fono: 844 4020840.</span></strong></em></h2>
+<h2 style="text-align: center;"><a href="https://www.facebook.com/TecNMcampusSaltillo/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/800px-Facebook_logo_%28square%29.png" width="80px" height="80px" /></a> <a href="http://its.mx">
+ <img
+href="https://www.youtube.com/channel/UCf4pqcU7cOI8emhhoeYoVVw"><img src="https://seeklogo.com/images/Y/youtube-2017-icon-logo-D1FE045118-seeklogo.com.png" width="110px" height="80px" /></a> 
+  
+  <img
+href="https://twitter.com/TecNM_MX"><img src="https://static.vecteezy.com/system/resources/previews/002/534/045/original/social-media-twitter-logo-blue-isolated-free-vector.jpg" width="100px" height="90px" /></a> 
+  
+ <a href="http://its.mx"><img
+src="https://w7.pngwing.com/pngs/428/279/png-transparent-computer-icons-web-page-identity-angle-text-logo.png" width="85px" height="85px" /></a> <br /><img src="https://www.tijuana.tecnm.mx/wp-content/uploads/2017/08/Tecnologico-Nacional-de-Mexico-1568x757.jpg" alt="tecnm" width="131" height="64" /></h2>
